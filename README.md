@@ -1,12 +1,6 @@
-# django-project-template
+# Raúl's django-project-template
 
 When I get an idea for a backend project, I want to get up and running quickly with all my favorite tools. Hence this template repository!
-
-## Quickstart
-
-```
-django-admin startproject --template=https://github.com/rnegron/django-project-template/archive/master.zip project-name-here
-```
 
 ## About
 
@@ -23,6 +17,40 @@ Inspired by [Sergio Mattei's](https://twitter.com/matteing) "Shipping Projects a
 * [Argon2](https://docs.djangoproject.com/en/3.0/topics/auth/passwords/#using-argon2-with-django) hashed passwords by default
 * Alternative settings layout with a top-level config folder
 * Custom user model with no username (only email/password)
+
+
+## Quickstart
+
+I recommend checking out [pipx](https://github.com/pipxproject/pipx) for isolating management commands like `django-admin` when working outside a virtual environment.
+
+
+```bash
+pipx install 'django<3.0'
+```
+
+```bash
+django-admin startproject \
+    --template=https://github.com/rnegron/django-project-template/archive/master.zip \
+    --name=docker-entrypoint.sh \
+    project_name_here
+```
+
+```
+cd project_name_here
+```
+
+```bash
+poetry install
+```
+
+```bash
+cp .env.example .env
+```
+
+```
+poetry run python manage.py check
+```
+
 
 ## Docker Setup
 

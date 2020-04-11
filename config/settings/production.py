@@ -1,5 +1,3 @@
-# type: ignore
-
 from .base import *  # noqa
 
 # DATABASES

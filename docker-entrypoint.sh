@@ -28,7 +28,7 @@ case "$1" in
     python manage.py migrate
 
     echo "==> Loading initial data..."
-    python manage.py loaddata {{ project_name }}/users/fixtures/initial.json
+    python manage.py loaddata "{{ project_name }}/users/fixtures/initial.json"
 
     echo "==> Running dev server..."
     python manage.py runserver_plus 0.0.0.0:8000
