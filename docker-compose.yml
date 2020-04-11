@@ -1,0 +1,33 @@
+version: '3'
+
+volumes:
+  database:
+    external: false
+
+services:
+  database:
+    image: postgres:11.7
+    environment:
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - database:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: dev_start
+    entrypoint: /home/appuser/docker-entrypoint.sh
+    environment:
+      - DATABASE_URL=postgres://postgres:password@database:5432/postgres
+    env_file:
+      - .env
+    restart: on-failure
+    volumes:
+      - .:/home/appuser/src
+    ports:
+      - "8000:8000"
+    links:
+      - database:database

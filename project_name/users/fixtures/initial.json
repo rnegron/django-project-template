@@ -1,0 +1,18 @@
+[
+    {
+      "model": "users.user",
+      "pk": "f405f8f9-410e-40fd-ab84-b596eceb019b",
+      "fields": {
+        "password": "argon2$argon2i$v=19$m=512,t=2,p=2$d3pqMFV1Ykl1OGJW$CF5wOiX53xRFU7hxB/79RQ",
+        "last_login": null,
+        "is_superuser": true,
+        "name": "Admin User",
+        "email": "admin@example.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2019-10-18T22:51:28.682Z",
+        "groups": [],
+        "user_permissions": []
+      }
+    }
+  ]
