@@ -12,11 +12,14 @@ Inspired by [Sergio Mattei's](https://twitter.com/matteing) "Shipping Projects a
 * [poetry](https://python-poetry.org/) as an alternative to pipenv
 * Containerization with Docker
 * A `docker-compose` setup for easy development using Postgres 11
+* Static file serving with [WhiteNoise](http://whitenoise.evans.io/en/stable/)
+* Support deployment to [Heroku](https://dashboard.heroku.com/) using container
 * Testing with [pytest-django](https://pytest-django.readthedocs.io/en/latest/index.html)
 * Aggressive [pre-commit](https://pre-commit.com/) hooks with tools such as black, isort and flake8
 * [Argon2](https://docs.djangoproject.com/en/2.2/topics/auth/passwords/#using-argon2-with-django) hashed passwords by default
 * Alternative settings layout within a top-level config folder
 * Custom user model with no username (only email/password)
+* [Sentry](https://sentry.io) support for error tracking
 
 
 ## Manual Quickstart
@@ -31,7 +34,7 @@ pipx install 'django<3.0'
 ```bash
 django-admin startproject \
     --template=https://github.com/rnegron/django-project-template/archive/master.zip \
-    --name=docker-entrypoint.sh \
+    --name=docker-entrypoint.sh,heroku.yml,.isort.cfg \
     project_name_here
 ```
 
@@ -49,9 +52,9 @@ cp .env.example .env
 
 ```
 poetry run python manage.py check
-poetry run python manage.py makemigrations
-poetry run python manage.py migrate
 ```
+
+You will need to provide your own Postgres database, along with modifying the `.env` to
 
 
 ## Docker Quickstart
@@ -67,12 +70,25 @@ poetry run python manage.py migrate
 
 4. Run `docker-compose down` to stop the running containers.
 
+## Deploy with Heroku
+
+Log in to your Heroku account with their CLI and set up your repository to track your Heroku app. Then,
+
+* `heroku stack:set container`
+* `git push heroku master`
+
+More information: [Heroku docs](https://devcenter.heroku.com/articles/build-docker-images-heroku-yml).
+
+## Track errors with Sentry
+
+Simply add your Sentry DSN to the `.env` file.
+More information: [Sentry docs](https://sentry.io/for/django/).
+
+
 ## To-Do
 
 ### Add
 - Test runner script
-- Sentry
 - Celery
-- Heroku
 - mypy
 - Debugging setup

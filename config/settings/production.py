@@ -1,3 +1,8 @@
+import os
+
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
 from .base import *  # noqa
 
 # DATABASES
@@ -20,6 +25,13 @@ SECURE_HSTS_SECONDS = 60
 SECURE_BROWSER_XSS_FILTER = True
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# sentry
+SENTRY_DSN = os.getenv("SENTRY_DSN")
+
+if SENTRY_DSN:
+    sentry_sdk.init(dsn=SENTRY_DSN, integrations=[DjangoIntegration()])  # type: ignore
+
 
 # LOGGING
 LOGGING = {
