@@ -34,7 +34,8 @@ pipx install 'django<3.0'
 ```bash
 django-admin startproject \
     --template=https://github.com/rnegron/django-project-template/archive/master.zip \
-    --name=docker-entrypoint.sh,heroku.yml,.isort.cfg \
+    --name=docker-entrypoint.sh,.isort.cfg \
+    --extension=py,md,yml \
     project_name_here
 ```
 
