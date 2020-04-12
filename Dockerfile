@@ -26,7 +26,7 @@ WORKDIR /tmp
 RUN pip install poetry==1.0.5
 COPY pyproject.toml poetry.lock /tmp/
 RUN poetry install
-RUN poetry export -f requirements.txt > /tmp/requirements.txt
+RUN poetry export --dev -f requirements.txt > /tmp/requirements.txt
 
 FROM base
 
