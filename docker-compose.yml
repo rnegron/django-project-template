@@ -25,10 +25,16 @@ services:
       - DJANGO_SETTINGS_MODULE=config.settings.local
     env_file:
       - .env
+    environment:
+      - VSCODE_DEBUGGER=True
+      - PTVSD_PORT=5678
     restart: on-failure
     volumes:
       - .:/home/appuser/src
+    expose:
+      - "5678"
     ports:
       - "8000:8000"
+      - "5678:5678"
     links:
       - database:database

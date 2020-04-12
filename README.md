@@ -13,10 +13,11 @@ Inspired by [Sergio Mattei's](https://twitter.com/matteing) "Shipping Projects a
 * Containerization with Docker
 * A `docker-compose` setup for easy development using Postgres 11
 * Static file serving with [WhiteNoise](http://whitenoise.evans.io/en/stable/)
-* Support deployment to [Heroku](https://dashboard.heroku.com/) using container
+* Deployment to [Heroku](https://dashboard.heroku.com/) using container
 * Testing with [pytest-django](https://pytest-django.readthedocs.io/en/latest/index.html)
-* A better interactive debugger using [Werkzeug](https://palletsprojects.com/p/werkzeug/) 
+* A better interactive debugger using [Werkzeug](https://palletsprojects.com/p/werkzeug/)
 * Aggressive [pre-commit](https://pre-commit.com/) hooks with tools such as black, isort and flake8
+* Visual Studio Code remote debugging setup using [ptvsd](https://github.com/microsoft/ptvsd)
 * [Argon2](https://docs.djangoproject.com/en/2.2/topics/auth/passwords/#using-argon2-with-django) hashed passwords by default
 * Alternative settings layout within a top-level config folder
 * Custom user model with no username (only email/password)
@@ -56,22 +57,33 @@ cp .env.example .env
 poetry run python manage.py check
 ```
 
-You will need to provide your own Postgres database, along with modifying the `.env` to
+If not using Docker, you will need to provide your own Postgres database and add the connection URL to the `.env` file.
 
 
 ## Docker Quickstart
 
-1. Download [Docker Compose](https://docs.docker.com/compose/install/)
-2. Run `docker-compose up -d`
-3. Visit [http://localhost:8000](http//localhost:8000) to view the API. A super user for the Django Admin is created automatically using fixtures.
+```bash
+django-admin startproject \
+    --template=https://github.com/rnegron/django-project-template/archive/master.zip \
+    --name=docker-entrypoint.sh,.isort.cfg \
+    --extension=py,md,yml \
+    project_name_here
+```
+
+```
+cd project_name_here
+```
+
+```
+docker-compose up --detach --build
+```
+
+Visit [http://localhost:8000](http//localhost:8000) to view the API. A super user for the Django Admin is created automatically using fixtures.
 
 ```
     email: admin@example.com
     password: password123
 ```
-
-4. Run `docker-compose down` to stop the running containers.
-
 ## Deploy with Heroku
 
 Log in to your Heroku account with their CLI and set up your repository to track your Heroku app. Then,
@@ -84,6 +96,7 @@ More information: [Heroku docs](https://devcenter.heroku.com/articles/build-dock
 ## Track errors with Sentry
 
 Simply add your Sentry DSN to the `.env` file.
+
 More information: [Sentry docs](https://sentry.io/for/django/).
 
 
@@ -93,4 +106,3 @@ More information: [Sentry docs](https://sentry.io/for/django/).
 - Test runner script
 - Celery
 - mypy
-- Debugging setup
