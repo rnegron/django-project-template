@@ -15,6 +15,7 @@ Inspired by [Sergio Mattei's](https://twitter.com/matteing) "Shipping Projects a
 * Static file serving with [WhiteNoise](http://whitenoise.evans.io/en/stable/)
 * Support deployment to [Heroku](https://dashboard.heroku.com/) using container
 * Testing with [pytest-django](https://pytest-django.readthedocs.io/en/latest/index.html)
+* A better interactive debugger using [Werkzeug](https://palletsprojects.com/p/werkzeug/) 
 * Aggressive [pre-commit](https://pre-commit.com/) hooks with tools such as black, isort and flake8
 * [Argon2](https://docs.djangoproject.com/en/2.2/topics/auth/passwords/#using-argon2-with-django) hashed passwords by default
 * Alternative settings layout within a top-level config folder
