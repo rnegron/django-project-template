@@ -1,6 +1,6 @@
-# Raúl's django-project-template
+# Raúl's Django project template
 
-When I get an idea for a backend project, I want to get up and running quickly with all my favorite tools. Hence this template repository!
+When I get an idea for a backend project, I want to get up and running quickly with all my favorite packages. Hence this template repository!
 
 ## About
 
@@ -14,12 +14,12 @@ Inspired by [Sergio Mattei's](https://twitter.com/matteing) "Shipping Projects a
 * A `docker-compose` setup for easy development using Postgres 11
 * Testing with [pytest-django](https://pytest-django.readthedocs.io/en/latest/index.html)
 * Aggressive [pre-commit](https://pre-commit.com/) hooks with tools such as black, isort and flake8
-* [Argon2](https://docs.djangoproject.com/en/3.0/topics/auth/passwords/#using-argon2-with-django) hashed passwords by default
-* Alternative settings layout with a top-level config folder
+* [Argon2](https://docs.djangoproject.com/en/2.2/topics/auth/passwords/#using-argon2-with-django) hashed passwords by default
+* Alternative settings layout within a top-level config folder
 * Custom user model with no username (only email/password)
 
 
-## Quickstart
+## Manual Quickstart
 
 I recommend checking out [pipx](https://github.com/pipxproject/pipx) for isolating management commands like `django-admin` when working outside a virtual environment.
 
@@ -52,7 +52,7 @@ poetry run python manage.py check
 ```
 
 
-## Docker Setup
+## Docker Quickstart
 
 1. Download [Docker Compose](https://docs.docker.com/compose/install/)
 2. Run `docker-compose up -d`
@@ -73,7 +73,4 @@ poetry run python manage.py check
 - Celery
 - Heroku
 - mypy
-
-### Update
-
-- Improve documentation
+- Debugging setup

@@ -1,11 +1,11 @@
-FROM python:3.7-slim-buster as base
+FROM python:3.8-slim-buster as base
 
 ENV PIP_USER=1
 ENV PYTHONUNBUFFERED=1
 
-RUN apt clean \
+RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && apt update -y
+    && apt-get update -y
 
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
@@ -17,8 +17,11 @@ USER appuser
 
 FROM base as builder
 
+WORKDIR /tmp
+
 RUN pip install poetry==1.0.5
 COPY pyproject.toml poetry.lock /tmp/
+RUN poetry install
 RUN poetry export -f requirements.txt > /tmp/requirements.txt
 
 FROM base

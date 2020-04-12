@@ -118,3 +118,4 @@ dmypy.json
 # Mac OS
 **/.DS_Store
 scratchpad
+.vscode
