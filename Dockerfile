@@ -11,6 +11,10 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
+RUN apt-get install -y --no-install-recommends \
+    build-essential=12.6 \
+    git=1:2.20.1-2+deb10u1
+
 ENV PATH="/home/appuser/.local/bin:$PATH"
 RUN useradd --create-home appuser
 USER appuser
