@@ -12,4 +12,4 @@ release:
   image: web
 
 run:
-  web: gunicorn -b "0.0.0.0:$PORT" -w 2 "{{ project_name }}.config.wsgi:application" --log-file -
+  web: gunicorn -b "0.0.0.0:$PORT" -w 2 "config.wsgi:application" --log-file -

@@ -94,7 +94,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "{{ project_name }}.wsgi.application"
+WSGI_APPLICATION = "config.wsgi.application"
 
 
 # Database
