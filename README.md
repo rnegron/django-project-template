@@ -41,7 +41,7 @@ django-admin startproject \
     project_name_here
 ```
 
-```
+```bash
 cd project_name_here
 ```
 
@@ -53,7 +53,7 @@ poetry install
 cp .env.example .env
 ```
 
-```
+```bash
 poetry run python manage.py check
 ```
 
@@ -70,15 +70,19 @@ django-admin startproject \
     project_name_here
 ```
 
-```
+```bash
 cd project_name_here
 ```
 
+```bash
+cp .env.example .env
 ```
+
+```bash
 docker-compose up --detach --build
 ```
 
-Visit [http://localhost:8000](http//localhost:8000) to view the API. A super user for the Django Admin is created automatically using fixtures.
+The API should be live at [http://localhost:8000](http//localhost:8000). A super user for the Django Admin is created automatically using fixtures when using the Docker quickstart method.
 
 ```
     email: admin@example.com

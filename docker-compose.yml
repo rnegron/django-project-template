@@ -20,12 +20,11 @@ services:
       dockerfile: Dockerfile
     command: dev_start
     entrypoint: /home/appuser/docker-entrypoint.sh
-    environment:
-      - DATABASE_URL=postgres://postgres:password@database:5432/postgres
-      - DJANGO_SETTINGS_MODULE="config.settings.local"
     env_file:
       - .env
     environment:
+      - DATABASE_URL=postgres://postgres:password@database:5432/postgres
+      - DJANGO_SETTINGS_MODULE=config.settings.local
       - VSCODE_DEBUGGER=True
       - PTVSD_PORT=5678
     restart: on-failure
