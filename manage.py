@@ -16,7 +16,7 @@ def main():
             ptvsd_port = os.environ.get("PTVSD_PORT", 5678)
 
             try:
-                ptvsd.enable_attach(address=("0.0.0.0", ptvsd_port), redirect_output=True)
+                ptvsd.enable_attach(address=("0.0.0.0", ptvsd_port))
                 print(f"Started ptvsd at port {ptvsd_port}")
             except OSError:
                 print(f"Error: Could open ptvsd at port {ptvsd_port}")

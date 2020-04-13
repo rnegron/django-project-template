@@ -58,7 +58,6 @@ INSTALLED_APPS = [
     "dj_rest_auth.registration",
     "corsheaders",
     "django_filters",
-    "django_extensions",
     # Local Apps
     "{{ project_name }}.users.apps.UsersConfig",
     "{{ project_name }}.api.apps.ApiConfig",

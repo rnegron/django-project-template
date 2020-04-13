@@ -22,7 +22,7 @@ services:
     entrypoint: /home/appuser/docker-entrypoint.sh
     environment:
       - DATABASE_URL=postgres://postgres:password@database:5432/postgres
-      - DJANGO_SETTINGS_MODULE=config.settings.local
+      - DJANGO_SETTINGS_MODULE="config.settings.local"
     env_file:
       - .env
     environment:
