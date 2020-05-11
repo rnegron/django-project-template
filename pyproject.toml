@@ -19,7 +19,7 @@ dj-rest-auth = "^1.0.1"
 gunicorn = "^20.0.4"
 python-dotenv = "^0.12.0"
 django-allauth = "^0.41.0"
-argon2-cffi = "^19.2.0"
+argon2-cffi = "^20.1.0"
 sentry-sdk = "^0.14.3"
 whitenoise = "^5.0.1"
 
