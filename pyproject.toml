@@ -22,7 +22,7 @@ django-allauth = "^0.42.0"
 argon2-cffi = "^20.1.0"
 sentry-sdk = "^0.14.4"
 whitenoise = "^5.1.0"
-pre-commit = "^2.4.0"
+pre-commit = "^2.6.0"
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
