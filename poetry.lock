@@ -621,7 +621,7 @@ description = "Python client for Sentry (https://getsentry.com)"
 name = "sentry-sdk"
 optional = false
 python-versions = "*"
-version = "0.14.4"
+version = "0.16.0"
 
 [package.dependencies]
 certifi = "*"
@@ -629,7 +629,7 @@ urllib3 = ">=1.10.0"
 
 [package.extras]
 aiohttp = ["aiohttp (>=3.5)"]
-beam = ["beam (>=2.12)"]
+beam = ["apache-beam (>=2.12)"]
 bottle = ["bottle (>=0.12.13)"]
 celery = ["celery (>=3)"]
 django = ["django (>=1.8)"]
@@ -744,7 +744,7 @@ version = "5.1.0"
 brotli = ["brotli"]
 
 [metadata]
-content-hash = "7f5e1d6b3f48a4b48bcb81b70b29e1d88d387873ff679bc9191a4c048911644f"
+content-hash = "3d1ade02936fcf5118042b21d71ceb68279df671163ca38a663c966822988419"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -1080,6 +1080,7 @@ regex = [
     {file = "regex-2020.6.7.tar.gz", hash = "sha256:ffd4f80602490a309064cf2b203e220d581c51660e01055c64bf5da450485ee6"},
 ]
 requests = [
+    {file = "requests-2.23.0-py2.7.egg", hash = "sha256:5d2d0ffbb515f39417009a46c14256291061ac01ba8f875b90cad137de83beb4"},
     {file = "requests-2.23.0-py2.py3-none-any.whl", hash = "sha256:43999036bfa82904b6af1d99e4882b560e5e2c68e5c4b0aa03b655f3d7d73fee"},
     {file = "requests-2.23.0.tar.gz", hash = "sha256:b3f43d496c6daba4493e7c431722aeb7dbc6288f52a6e04e7b6023b0247817e6"},
 ]
@@ -1089,8 +1090,8 @@ requests-oauthlib = [
     {file = "requests_oauthlib-1.3.0-py3.7.egg", hash = "sha256:fa6c47b933f01060936d87ae9327fead68768b69c6c9ea2109c48be30f2d4dbc"},
 ]
 sentry-sdk = [
-    {file = "sentry-sdk-0.14.4.tar.gz", hash = "sha256:0e5e947d0f7a969314aa23669a94a9712be5a688ff069ff7b9fc36c66adc160c"},
-    {file = "sentry_sdk-0.14.4-py2.py3-none-any.whl", hash = "sha256:799a8bf76b012e3030a881be00e97bc0b922ce35dde699c6537122b751d80e2c"},
+    {file = "sentry-sdk-0.16.0.tar.gz", hash = "sha256:da06bc3641e81ec2c942f87a0676cd9180044fa3d1697524a0005345997542e2"},
+    {file = "sentry_sdk-0.16.0-py2.py3-none-any.whl", hash = "sha256:e80d61af85d99a1222c1a3e2a24023618374cd50a99673aa7fa3cf920e7d813b"},
 ]
 six = [
     {file = "six-1.15.0-py2.py3-none-any.whl", hash = "sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"},
