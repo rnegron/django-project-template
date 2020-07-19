@@ -13,7 +13,7 @@ Inspired by [Sergio Mattei's](https://twitter.com/matteing) "Shipping Projects a
 * Containerization with Docker
 * A `docker-compose` setup for easy development using Postgres 11
 * Static file serving with [WhiteNoise](http://whitenoise.evans.io/en/stable/)
-* Deployment to [Heroku](https://dashboard.heroku.com/) using container
+* Deployment to [Heroku](https://dashboard.heroku.com/) using containers
 * Testing with [pytest-django](https://pytest-django.readthedocs.io/en/latest/index.html)
 * A better interactive debugger using [Werkzeug](https://palletsprojects.com/p/werkzeug/)
 * Aggressive [pre-commit](https://pre-commit.com/) hooks with tools such as black, isort and flake8
@@ -22,7 +22,9 @@ Inspired by [Sergio Mattei's](https://twitter.com/matteing) "Shipping Projects a
 * Alternative settings layout within a top-level config folder
 * Custom user model with no username (only email/password)
 * [Sentry](https://sentry.io) support for error tracking
-
+* [Atomic Requests](https://docs.djangoproject.com/en/2.2/ref/settings/#atomic-requests) in production
+* [Celery](https://docs.celeryproject.org/en/stable/index.html) asynchronous task management with [Redis](https://redis.io) as the transport
+* [Django Celery Beat](https://django-celery-beat.readthedocs.io/en/latest/) for periodic tasks management from the Django Admin
 
 ## Manual Quickstart
 
@@ -61,6 +63,10 @@ If not using Docker, you will need to provide your own Postgres database and add
 
 
 ## Docker Quickstart
+
+```bash
+pipx install 'django<3.0'
+```
 
 ```bash
 django-admin startproject \
@@ -108,5 +114,4 @@ More information: [Sentry docs](https://sentry.io/for/django/).
 
 ### Add
 - Test runner script
-- Celery
 - mypy

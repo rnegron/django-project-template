@@ -1,7 +1,9 @@
 import os
 
 import sentry_sdk
+from sentry_sdk.integrations.celery import CeleryIntegration
 from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.redis import RedisIntegration
 
 from .base import *  # noqa
 
@@ -30,7 +32,14 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 SENTRY_DSN = os.getenv("SENTRY_DSN")
 
 if SENTRY_DSN:
-    sentry_sdk.init(dsn=SENTRY_DSN, integrations=[DjangoIntegration()])  # type: ignore
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        integrations=[  # type: ignore
+            DjangoIntegration(),
+            CeleryIntegration(),
+            RedisIntegration(),
+        ],
+    )
 
 
 # LOGGING

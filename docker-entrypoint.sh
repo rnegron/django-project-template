@@ -21,7 +21,7 @@ until postgres_ready; do
     done
 
 case "$1" in
-  "dev_start")
+  "dev_web_start")
     echo "==> Running migrations..."
     python manage.py collectstatic --noinput
     python manage.py makemigrations
@@ -30,8 +30,13 @@ case "$1" in
     echo "==> Loading initial data..."
     python manage.py loaddata "{{ project_name }}/users/fixtures/initial.json"
 
-    echo "==> Running dev server..."
+    echo "==> Running web dev server..."
     python manage.py runserver_plus 0.0.0.0:8000
+    ;;
+
+  "dev_worker_start")
+    echo "==> Running Celery worker and beat..."
+    celery -A {{ project_name }} worker --beat --scheduler django --loglevel=info
     ;;
   *)
     exec "$@"

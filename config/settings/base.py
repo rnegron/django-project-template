@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     "dj_rest_auth.registration",
     "corsheaders",
     "django_filters",
+    "django_celery_beat",
     # Local Apps
     "{{ project_name }}.users.apps.UsersConfig",
     "{{ project_name }}.api.apps.ApiConfig",
@@ -217,3 +218,10 @@ REST_FRAMEWORK = {
 
 # django-cors-headers
 CORS_URLS_REGEX = r"^/api/v1/.*$"
+
+
+# Celery settings
+
+CELERY_TASK_ACKS_LATE = True
+CELERY_TASK_TIME_LIMIT = 60 * 2
+CELERY_BROKER_URL = os.environ.get("REDIS_URL")

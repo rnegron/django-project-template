@@ -11,7 +11,7 @@ def main():
 
         RUN_MAIN = os.environ.get("RUN_MAIN") or os.environ.get("WERKZEUG_RUN_MAIN")
         if RUN_MAIN and os.environ.get("VSCODE_DEBUGGER", False):
-            import ptvsd # noqa
+            import ptvsd  # noqa
 
             ptvsd_port = os.environ.get("PTVSD_PORT", 5678)
 
