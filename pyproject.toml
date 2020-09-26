@@ -23,7 +23,7 @@ argon2-cffi = "^20.1.0"
 sentry-sdk = "^0.16.1"
 whitenoise = "^5.1.0"
 pre-commit = "^2.4.0"
-celery = {extras = ["redis"], version = "^4.4.6"}
+celery = {extras = ["redis"], version = "^5.0.0"}
 django-celery-beat = "^2.0.0"
 
 [tool.poetry.dev-dependencies]
