@@ -241,7 +241,7 @@ description = "Authentication and Registration in Django Rest Framework"
 name = "dj-rest-auth"
 optional = false
 python-versions = ">=3.5"
-version = "1.1.1"
+version = "1.1.2"
 
 [package.dependencies]
 Django = ">=2.0"
@@ -926,7 +926,8 @@ version = "5.2.0"
 brotli = ["brotli"]
 
 [metadata]
-content-hash = "da100d96f10f74d0e17cafecbb41a7169b4e01695fd2ea0378a3825ab3fdc0ca"
+content-hash = "1cc1ac0a151a2630d35d36b406266df1940f86d78555bcea9e71ad82ff519094"
+lock-version = "1.0"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -1054,7 +1055,7 @@ dj-database-url = [
     {file = "dj_database_url-0.5.0-py2.py3-none-any.whl", hash = "sha256:851785365761ebe4994a921b433062309eb882fedd318e1b0fcecc607ed02da9"},
 ]
 dj-rest-auth = [
-    {file = "dj-rest-auth-1.1.1.tar.gz", hash = "sha256:96bb0c13d36747b02104e06cc8cd7214398c325a633b2cb102f00bf946208dd1"},
+    {file = "dj-rest-auth-1.1.2.tar.gz", hash = "sha256:530f1dd71b96edb13ccedcbf783784a5b03e0148bdb115dba8729f4a66076bbb"},
 ]
 django = [
     {file = "Django-2.2.16-py3-none-any.whl", hash = "sha256:83ced795a0f239f41d8ecabf51cc5fad4b97462a6008dc12e5af3cb9288724ec"},
