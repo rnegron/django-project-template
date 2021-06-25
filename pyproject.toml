@@ -27,7 +27,7 @@ celery = "5.0.0"
 django-celery-beat = "^2.0.0"
 
 [tool.poetry.dev-dependencies]
-black = "^19.10b0"
+black = "^21.6b0"
 django-debug-toolbar = "^2.2"
 isort = "^5.1.2"
 pre-commit = "^2.2.0"
