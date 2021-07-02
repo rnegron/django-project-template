@@ -24,7 +24,7 @@ sentry-sdk = "0.17.8"
 whitenoise = "^5.1.0"
 pre-commit = "^2.4.0"
 celery = "5.0.0"
-django-celery-beat = "^2.0.0"
+django-celery-beat = "^2.2.1"
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
