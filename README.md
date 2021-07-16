@@ -38,7 +38,7 @@ pipx install 'django==3.2'
 
 ```bash
 django-admin startproject \
-    --template=https://github.com/rnegron/django-project-template/archive/master.zip \
+    --template=https://github.com/rnegron/django-project-template/archive/main.zip \
     --name=docker-entrypoint.sh,.isort.cfg \
     --extension=py,md,yml \
     project_name_here
@@ -66,12 +66,12 @@ If not using Docker, you will need to provide your own Postgres database and add
 ## Docker Quickstart
 
 ```bash
-pipx install 'django==3.0'
+pipx install 'django==3.2'
 ```
 
 ```bash
 django-admin startproject \
-    --template=https://github.com/rnegron/django-project-template/archive/master.zip \
+    --template=https://github.com/rnegron/django-project-template/archive/main.zip \
     --name=docker-entrypoint.sh,.isort.cfg \
     --extension=py,md,yml \
     project_name_here
