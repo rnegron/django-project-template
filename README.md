@@ -8,21 +8,22 @@ Inspired by [Sergio Mattei's](https://twitter.com/matteing) "Shipping Projects a
 
 ## Features
 
-* Latest Django LTS (2.2)
+* Latest Python (3.9)
+* Latest Django LTS (3.2)
 * [poetry](https://python-poetry.org/) as an alternative to pipenv
 * Containerization with Docker
-* A `docker-compose` setup for easy development using Postgres 11
+* A `docker-compose` setup for easy development using the latest Postgres major version (13)
 * Static file serving with [WhiteNoise](http://whitenoise.evans.io/en/stable/)
 * Deployment to [Heroku](https://dashboard.heroku.com/) using containers
 * Testing with [pytest-django](https://pytest-django.readthedocs.io/en/latest/index.html)
 * A better interactive debugger using [Werkzeug](https://palletsprojects.com/p/werkzeug/)
 * Aggressive [pre-commit](https://pre-commit.com/) hooks with tools such as black, isort and flake8
 * Visual Studio Code remote debugging setup using [ptvsd](https://github.com/microsoft/ptvsd)
-* [Argon2](https://docs.djangoproject.com/en/2.2/topics/auth/passwords/#using-argon2-with-django) hashed passwords by default
+* [Argon2](https://docs.djangoproject.com/en/3.2/topics/auth/passwords/#using-argon2-with-django) hashed passwords by default
 * Alternative settings layout within a top-level config folder
 * Custom user model with no username (only email/password)
 * [Sentry](https://sentry.io) support for error tracking
-* [Atomic Requests](https://docs.djangoproject.com/en/2.2/ref/settings/#atomic-requests) in production
+* [Atomic Requests](https://docs.djangoproject.com/en/3.2/ref/settings/#atomic-requests) in production
 * [Celery](https://docs.celeryproject.org/en/stable/index.html) asynchronous task management with [Redis](https://redis.io) as the transport
 * [Django Celery Beat](https://django-celery-beat.readthedocs.io/en/latest/) for periodic tasks management from the Django Admin
 
@@ -32,7 +33,7 @@ I recommend checking out [pipx](https://github.com/pipxproject/pipx) for isolati
 
 
 ```bash
-pipx install 'django<3.0'
+pipx install 'django==3.2'
 ```
 
 ```bash
@@ -65,7 +66,7 @@ If not using Docker, you will need to provide your own Postgres database and add
 ## Docker Quickstart
 
 ```bash
-pipx install 'django<3.0'
+pipx install 'django==3.0'
 ```
 
 ```bash
@@ -113,5 +114,12 @@ More information: [Sentry docs](https://sentry.io/for/django/).
 ## To-Do
 
 ### Add
-- Test runner script
-- mypy
+- GitHub CI testing and linting
+- Local test scripts
+- Type hinting with mypy
+- ASGI support
+- django-htmx
+- django-tailwind
+
+### Remove
+- dj-database-url package
