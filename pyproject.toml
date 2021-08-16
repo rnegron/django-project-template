@@ -29,7 +29,7 @@ requests = "2.26.0"
 
 [tool.poetry.dev-dependencies]
 black = "21.6b0"
-django-debug-toolbar = "3.2.1"
+django-debug-toolbar = "3.2.2"
 isort = "5.9.2"
 pre-commit = "2.13.0"
 pytest-django = "4.4.0"
