@@ -6,7 +6,7 @@ volumes:
 
 services:
   database:
-    image: postgres:13.3
+    image: postgres:14.2
     environment:
       - POSTGRES_PASSWORD=password
     volumes:
@@ -14,7 +14,7 @@ services:
     ports:
       - "5432:5432"
   redis:
-    image: redis:5.0-alpine
+    image: redis:6.2-alpine
     ports:
       - "6379:6379"
   web:
@@ -22,22 +22,17 @@ services:
       context: .
       dockerfile: Dockerfile
     command: dev_web_start
-    entrypoint: /home/appuser/docker-entrypoint.sh
+    entrypoint: /src/docker-entrypoint.sh
     env_file:
       - .env
     environment:
       - DATABASE_URL=postgres://postgres:password@database:5432/postgres
       - DJANGO_SETTINGS_MODULE=config.settings.local
-      - VSCODE_DEBUGGER=True
-      - PTVSD_PORT=5678
     restart: on-failure
     volumes:
-      - .:/home/appuser/src
-    expose:
-      - "5678"
+      - .:/src
     ports:
-      - "8000:8000"
-      - "5678:5678"
+      - 8000:8000
     links:
       - database:database
       - redis:redis
@@ -47,16 +42,14 @@ services:
       context: .
       dockerfile: Dockerfile
     command: dev_worker_start
-    entrypoint: /home/appuser/docker-entrypoint.sh
+    entrypoint: /src/docker-entrypoint.sh
     env_file:
       - .env
     environment:
       - DATABASE_URL=postgres://postgres:password@database:5432/postgres
       - DJANGO_SETTINGS_MODULE=config.settings.local
-      - VSCODE_DEBUGGER=True
-      - PTVSD_PORT=5678
     volumes:
-      - .:/home/appuser/src
+      - .:/src
     links:
       - database:database
       - redis:redis

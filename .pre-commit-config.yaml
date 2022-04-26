@@ -1,17 +1,17 @@
 repos:
 - repo: https://github.com/python/black
-  rev: "21.6b0"
+  rev: "22.3.0"
   hooks:
   - id: black
     language_version: python3.9
 
 - repo: https://github.com/pre-commit/mirrors-isort
-  rev: v5.9.2
+  rev: v5.10.1
   hooks:
   -   id: isort
 
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.0.1
+  rev: v4.2.0
   hooks:
   - id: check-merge-conflict
     language_version: "python3"
@@ -22,13 +22,13 @@ repos:
   - id: trailing-whitespace
     language_version: "python3"
 
-- repo: https://gitlab.com/pycqa/flake8
-  rev: 3.9.2
+- repo: https://github.com/pycqa/flake8
+  rev: 4.0.1
   hooks:
   - id: flake8
     language_version: "python3"
     additional_dependencies:
-      - flake8-bugbear==18.2.0
+      - flake8-bugbear
       - flake8-builtins
       - flake8-comprehensions
       - flake8-print

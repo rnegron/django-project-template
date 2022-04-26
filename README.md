@@ -8,17 +8,16 @@ Inspired by [Sergio Mattei's](https://twitter.com/matteing) "Shipping Projects a
 
 ## Features
 
-* Latest Python (3.9)
+* Recent Python (3.9)
 * Latest Django LTS (3.2)
 * [poetry](https://python-poetry.org/) as an alternative to pipenv
 * Containerization with Docker
-* A `docker-compose` setup for easy development using the latest Postgres major version (13)
+* A `docker-compose` setup for easy development using the latest Postgres major version (14)
 * Static file serving with [WhiteNoise](http://whitenoise.evans.io/en/stable/)
 * Deployment to [Heroku](https://dashboard.heroku.com/) using containers
 * Testing with [pytest-django](https://pytest-django.readthedocs.io/en/latest/index.html)
 * A better interactive debugger using [Werkzeug](https://palletsprojects.com/p/werkzeug/)
 * Aggressive [pre-commit](https://pre-commit.com/) hooks with tools such as black, isort and flake8
-* Visual Studio Code remote debugging setup using [ptvsd](https://github.com/microsoft/ptvsd)
 * [Argon2](https://docs.djangoproject.com/en/3.2/topics/auth/passwords/#using-argon2-with-django) hashed passwords by default
 * Alternative settings layout within a top-level config folder
 * Custom user model with no username (only email/password)
