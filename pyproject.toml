@@ -25,7 +25,7 @@ whitenoise = "6.0.0"
 celery = "5.2.6"
 django-celery-beat = "2.2.1"
 requests = "2.26.0"
-redis = "3.5.3"
+redis = "4.3.1"
 
 [tool.poetry.dev-dependencies]
 black = "22.3.0"
