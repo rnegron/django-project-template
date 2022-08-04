@@ -3,9 +3,9 @@ repos:
   rev: "22.6.0"
   hooks:
   - id: black
-    language_version: python3.9
+    language_version: python3.10
 
-- repo: https://github.com/pre-commit/mirrors-isort
+- repo: https://github.com/PyCQA/isort
   rev: v5.10.1
   hooks:
   -   id: isort
@@ -23,7 +23,7 @@ repos:
     language_version: "python3"
 
 - repo: https://github.com/pycqa/flake8
-  rev: 4.0.1
+  rev: 5.0.4
   hooks:
   - id: flake8
     language_version: "python3"

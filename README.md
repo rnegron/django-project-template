@@ -8,7 +8,7 @@ Inspired by [Sergio Mattei's](https://twitter.com/matteing) "Shipping Projects a
 
 ## Features
 
-* Recent Python (3.9)
+* Recent Python (3.10)
 * Latest Django LTS (3.2)
 * [poetry](https://python-poetry.org/) as an alternative to pipenv
 * Containerization with Docker
@@ -16,11 +16,10 @@ Inspired by [Sergio Mattei's](https://twitter.com/matteing) "Shipping Projects a
 * Static file serving with [WhiteNoise](http://whitenoise.evans.io/en/stable/)
 * Deployment to [Heroku](https://dashboard.heroku.com/) using containers
 * Testing with [pytest-django](https://pytest-django.readthedocs.io/en/latest/index.html)
-* A better interactive debugger using [Werkzeug](https://palletsprojects.com/p/werkzeug/)
 * Aggressive [pre-commit](https://pre-commit.com/) hooks with tools such as black, isort and flake8
 * [Argon2](https://docs.djangoproject.com/en/3.2/topics/auth/passwords/#using-argon2-with-django) hashed passwords by default
 * Alternative settings layout within a top-level config folder
-* Custom user model with no username (only email/password)
+* [Custom user model](https://docs.djangoproject.com/en/3.2/topics/auth/customizing/#auth-custom-user) with no username (only email/password)
 * [Sentry](https://sentry.io) support for error tracking
 * [Atomic Requests](https://docs.djangoproject.com/en/3.2/ref/settings/#atomic-requests) in production
 * [Celery](https://docs.celeryproject.org/en/stable/index.html) asynchronous task management with [Redis](https://redis.io) as the transport
@@ -113,12 +112,9 @@ More information: [Sentry docs](https://sentry.io/for/django/).
 ## To-Do
 
 ### Add
-- GitHub CI testing and linting
+- GitHub CI testing
 - Local test scripts
 - Type hinting with mypy
 - ASGI support
 - django-htmx
 - django-tailwind
-
-### Remove
-- dj-database-url package
