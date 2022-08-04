@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-project-template"
-version = "0.3.0"
+version = "0.4.0"
 description = ""
 authors = ["Raúl Negrón <raul.esteban.negron@gmail.com>"]
 license = "MIT"
