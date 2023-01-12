@@ -5,6 +5,36 @@ repos:
   - id: black
     language_version: python3.11
 
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: "v0.981"
+  hooks:
+  - id: mypy
+    language_version: python3.11
+    args: [--ignore-missing-imports, --disallow-untyped-defs]
+    exclude: tests/|migrations/
+    additional_dependencies:
+          [
+            celery,
+            dj-database-url,
+            django-allauth,
+            django-celery-beat,
+            django-debug-toolbar,
+            django-filter,
+            django-htmx,
+            django-model-utils,
+            django-stubs==1.13.1,
+            django-tailwind,
+            Django,
+            djangorestframework-stubs==1.8.0,
+            djangorestframework,
+            gunicorn,
+            psycopg2-binary,
+            python-dotenv,
+            requests,
+            sentry-sdk,
+            whitenoise
+          ]
+
 - repo: https://github.com/PyCQA/isort
   rev: v5.11.3
   hooks:

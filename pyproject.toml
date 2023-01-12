@@ -15,7 +15,6 @@ django-extensions = "3.2.1"
 dj-database-url = "1.2.0"
 psycopg2-binary = "2.9.5"
 django-filter = "22.1"
-dj-rest-auth = "2.2.6"
 gunicorn = "20.1.0"
 python-dotenv = "0.21.0"
 django-allauth = "0.52.0"
@@ -38,6 +37,27 @@ pytest = "7.2.0"
 pytest-django = "4.5.2"
 factory-boy = "3.2.1"
 flake8 = "6.0.0"
+djangorestframework-stubs = "1.8.0"
+django-stubs = "1.13.1"
+mypy = "0.981"
+
+[tool.mypy]
+python_version = '3.11'
+warn_return_any = "True"
+warn_unused_configs = "True"
+warn_no_return = "True"
+warn_redundant_casts = "True"
+disallow_untyped_defs = "True"
+no_implicit_optional = "True"
+check_untyped_defs = "True"
+exclude = [
+    "migrations/*",
+]
+plugins = ["mypy_django_plugin.main", "mypy_drf_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "config.settings.test"
+
 
 [tool.black]
 line-length = 88
