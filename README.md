@@ -8,10 +8,12 @@ Inspired by [Sergio Mattei's](https://twitter.com/matteing) "Shipping Projects a
 
 ## Features
 
-* Recent Python (3.10)
+* Most recent Python (3.11)
 * Latest Django LTS (3.2)
-* [poetry](https://python-poetry.org/) as an alternative to pipenv
+* [poetry](https://python-poetry.org/) as an alternative to `pipenv`
 * Containerization with Docker
+* Type hints using `mypy` and `django-stubs`
+* Tests and linting with GitHub CI
 * A `docker-compose` setup for easy development using the latest Postgres major version (14)
 * Static file serving with [WhiteNoise](http://whitenoise.evans.io/en/stable/)
 * Deployment to [Heroku](https://dashboard.heroku.com/) using containers
@@ -24,6 +26,9 @@ Inspired by [Sergio Mattei's](https://twitter.com/matteing) "Shipping Projects a
 * [Atomic Requests](https://docs.djangoproject.com/en/3.2/ref/settings/#atomic-requests) in production
 * [Celery](https://docs.celeryproject.org/en/stable/index.html) asynchronous task management with [Redis](https://redis.io) as the transport
 * [Django Celery Beat](https://django-celery-beat.readthedocs.io/en/latest/) for periodic tasks management from the Django Admin
+* [htmx](https://htmx.org/) support via `django-htmx` for AJAX and other tools in HTML
+* [Tailwind CSS](https://tailwindcss.com/) support via `django-tailwind` for webpage styling
+* [Alpine.js](https://alpinejs.dev/) support via base template `<script>` tag for small interactivity
 
 ## Manual Quickstart
 
@@ -112,9 +117,5 @@ More information: [Sentry docs](https://sentry.io/for/django/).
 ## To-Do
 
 ### Add
-- GitHub CI testing
 - Local test scripts
-- Type hinting with mypy
 - ASGI support
-- django-htmx
-- django-tailwind

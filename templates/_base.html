@@ -1,0 +1,36 @@
+{% load static %}
+{% load django_htmx %}
+{% load tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+        <title>{% block head_title %}{{project_name}}{% endblock head_title %}</title>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block head %}
+        {% endblock head %}
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/inter.css' %}">
+        {% tailwind_css %}
+
+        <script defer type="text/javascript" src="{% static 'js/alpine-morph.min.js' %}"></script>
+        <script defer type="text/javascript" src="{% static 'js/alpine-persist.min.js' %}"></script>
+        <script defer type="text/javascript" src="{% static 'js/alpine-js.min.js' %}"></script>
+        <script defer type="text/javascript" src="{% static 'js/htmx.min.js' %}" data-debug="True"></script>
+    </head>
+    <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' class="bg-gray-50 font-serif leading-normal tracking-normal">
+        <main id="main" class="h-full bg-gray-100 max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 font-sans">
+            <header>
+                {% block header %}{% endblock header %}
+            </header>
+            {% block main %}{% endblock main %}
+            <footer>
+                {% block footer %}{% endblock footer %}
+            </footer>
+        </main>
+    </body>
+</html>
