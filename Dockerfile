@@ -1,4 +1,4 @@
-FROM python:3.10-slim-buster
+FROM python:3.11-slim-buster
 
 # Set environment variables
 ENV POETRY_VIRTUALENVS_CREATE=0
@@ -18,7 +18,7 @@ RUN apt-get update && \
         git
 
 # Install application-level dependencies
-RUN pip install poetry==1.1.13
+RUN pip install poetry==1.3.2
 COPY pyproject.toml poetry.lock /src/
 RUN poetry install --no-root
 

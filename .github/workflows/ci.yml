@@ -15,10 +15,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python 3.9.13
+      - name: Set up Python 3.11.1
         uses: actions/setup-python@v4
         with:
-          python-version: 3.9.13
+          python-version: 3.11.1
+
       - name: Install System Dependencies
         run: sudo apt-get update && sudo apt-get install -y --no-install-recommends build-essential curl gettext git
-      - uses: pre-commit/action@v2.0.3
+       pre-commit/action@v3.0.0
