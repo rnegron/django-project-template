@@ -67,7 +67,6 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -217,11 +216,6 @@ REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
     "TEST_REQUEST_DEFAULT_FORMAT": "json",
 }
-
-
-# django-cors-headers
-CORS_URLS_REGEX = r"^/api/v1/.*$"
-
 
 # Celery settings
 CELERY_TASK_ACKS_LATE = True

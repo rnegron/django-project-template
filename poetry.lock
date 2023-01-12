@@ -653,21 +653,6 @@ python-crontab = ">=2.3.4"
 tzdata = "*"
 
 [[package]]
-name = "django-cors-headers"
-version = "3.13.0"
-description = "django-cors-headers is a Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS)."
-category = "main"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "django-cors-headers-3.13.0.tar.gz", hash = "sha256:f9dc6b4e3f611c3199700b3e5f3398c28757dcd559c2f82932687f3d0443cfdf"},
-    {file = "django_cors_headers-3.13.0-py3-none-any.whl", hash = "sha256:37e42883b5f1f2295df6b4bba96eb2417a14a03270cb24b2a07f021cd4487cf4"},
-]
-
-[package.dependencies]
-Django = ">=3.2"
-
-[[package]]
 name = "django-debug-toolbar"
 version = "3.8.1"
 description = "A configurable set of panels that display various debug information about the current request/response."
@@ -1830,4 +1815,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "ee83cfefb2b49bd6a66e69c7fb25d78a953eaad08a13cf641248b30b28e37411"
+content-hash = "9a3f2af1e91e510970af684bc7e83414f9c22999479420603e09dfcd9a0e8969"
