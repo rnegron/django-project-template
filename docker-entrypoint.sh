@@ -34,6 +34,11 @@ case "$1" in
     python manage.py runserver 0.0.0.0:8000
     ;;
 
+  "dev_tailwind_start")
+    echo "==> Running Tailwind..."
+    python manage.py tailwind start
+    ;;
+
   "dev_worker_start")
     echo "==> Running Celery worker and beat..."
     celery -A {{ project_name }} worker --beat --scheduler django --loglevel=info

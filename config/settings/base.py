@@ -13,6 +13,7 @@ from pathlib import Path
 
 import dj_database_url
 import dotenv
+from django.utils.translation import gettext_lazy as _
 
 dotenv.load_dotenv(
     dotenv_path=os.path.join(
@@ -52,12 +53,13 @@ INSTALLED_APPS = [
     "allauth.account",
     "rest_framework",
     "rest_framework.authtoken",
-    "dj_rest_auth",
-    "dj_rest_auth.registration",
-    "corsheaders",
     "django_filters",
     "django_celery_beat",
+    "django_htmx",
+    "tailwind",
+    "django_browser_reload",
     # Local Apps
+    "{{ project_name }}.theme.apps.ThemeConfig",
     "{{ project_name }}.users.apps.UsersConfig",
     "{{ project_name }}.api.apps.ApiConfig",
 ]
@@ -79,7 +81,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [Path(BASE_DIR).joinpath("templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -88,10 +90,12 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
+            "builtins": [
+                "vg_stack.core.templatetags.filters",
+            ],
         },
     },
 ]
-
 WSGI_APPLICATION = "config.wsgi.application"
 
 
@@ -103,7 +107,6 @@ DATABASES = {
         default=f"sqlite:///{os.path.join(BASE_DIR, 'db.sqlite3')}", conn_max_age=600
     )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -140,6 +143,11 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+LANGUAGES = (
+    ("en-us", _("English")),
+    ("es-pr", _("Spanish")),
+)
 
 
 # Static files (CSS, JavaScript, Images)
@@ -225,3 +233,6 @@ CELERY_BROKER_URL = os.environ.get("REDIS_URL")
 
 # Django 3.2 default primary key
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+
+# Tailwind
+TAILWIND_APP_NAME = "{{ project_name }}.theme"

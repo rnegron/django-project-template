@@ -20,8 +20,6 @@ from django.urls import include, path
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("auth/", include("dj_rest_auth.urls")),
-    path("auth/registration", include("dj_rest_auth.registration.urls")),
     path("api/v1/", include("{{ project_name }}.api.urls")),
 ]
 
@@ -29,7 +27,10 @@ if settings.DEBUG:
     import debug_toolbar
 
     urlpatterns = (
-        [path("__debug__/", include(debug_toolbar.urls))]
+        [
+            path("__debug__/", include(debug_toolbar.urls)),
+            path("__reload__/", include("django_browser_reload.urls")),
+        ]
         + urlpatterns
         + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     )

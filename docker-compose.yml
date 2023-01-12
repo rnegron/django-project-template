@@ -53,3 +53,14 @@ services:
     links:
       - database:database
       - redis:redis
+
+  tailwind:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/src
+    command: dev_tailwind_start
+    entrypoint: /src/docker-entrypoint.sh
+    restart: unless-stopped
+    tty: true
