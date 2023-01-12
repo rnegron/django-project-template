@@ -60,6 +60,10 @@ cp .env.example .env
 ```
 
 ```bash
+poetry run pre-commit install
+```
+
+```bash
 poetry run python manage.py check
 ```
 
@@ -103,7 +107,7 @@ The API should be live at [http://localhost:8000](http//localhost:8000). A super
 Log in to your Heroku account with their CLI and set up your repository to track your Heroku app. Then,
 
 * `heroku stack:set container`
-* `git push heroku master`
+* `git push heroku main`
 
 More information: [Heroku docs](https://devcenter.heroku.com/articles/build-docker-images-heroku-yml).
 
@@ -113,9 +117,3 @@ Simply add your Sentry DSN to the `.env` file.
 
 More information: [Sentry docs](https://sentry.io/for/django/).
 
-
-## To-Do
-
-### Add
-- Local test scripts
-- ASGI support
