@@ -28,13 +28,13 @@ RUN apt-get update && \
         && rm -rf /var/lib/apt/lists/*
 
 # Install Node.js (for Tailwind support)
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get install -y --no-install-recommends nodejs \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # Install application-level dependencies
-RUN pip install --no-cache-dir poetry==1.3.2
+RUN pip install --no-cache-dir poetry==1.6.2
 COPY pyproject.toml poetry.lock /src/
 RUN poetry install --no-root
 
