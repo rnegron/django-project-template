@@ -17,10 +17,8 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/inter.css' %}">
         {% tailwind_css %}
 
-        <script defer type="text/javascript" src="{% static 'js/alpine-morph.min.js' %}"></script>
-        <script defer type="text/javascript" src="{% static 'js/alpine-persist.min.js' %}"></script>
-        <script defer type="text/javascript" src="{% static 'js/alpine-js.min.js' %}"></script>
-        <script defer type="text/javascript" src="{% static 'js/htmx.min.js' %}" data-debug="True"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+        <script defer src="//unpkg.com/alpinejs"></script>
     </head>
     <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' class="bg-gray-50 font-serif leading-normal tracking-normal">
         <main id="main" class="h-full bg-gray-100 max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 font-sans">
