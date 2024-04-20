@@ -8,22 +8,22 @@ Inspired by [Sergio Mattei's](https://twitter.com/matteing) "Shipping Projects a
 
 ## Features
 
-* Most recent Python (3.11)
-* Latest Django LTS (3.2)
+* Most recent Python (3.12)
+* Latest Django LTS (4.2)
 * [poetry](https://python-poetry.org/) as an alternative to `pipenv`
 * Containerization with Docker
 * Type hints using `mypy` and `django-stubs`
 * Tests and linting with GitHub CI
-* A `docker-compose` setup for easy development using the latest Postgres major version (14)
+* A `docker-compose` setup for easy development using the latest Postgres major version supported by Heroku (15)
 * Static file serving with [WhiteNoise](http://whitenoise.evans.io/en/stable/)
 * Deployment to [Heroku](https://dashboard.heroku.com/) using containers
 * Testing with [pytest-django](https://pytest-django.readthedocs.io/en/latest/index.html)
 * Aggressive [pre-commit](https://pre-commit.com/) hooks with tools such as black, isort and flake8
-* [Argon2](https://docs.djangoproject.com/en/3.2/topics/auth/passwords/#using-argon2-with-django) hashed passwords by default
+* [Argon2](https://docs.djangoproject.com/en/4.2/topics/auth/passwords/#using-argon2-with-django) hashed passwords by default
 * Alternative settings layout within a top-level config folder
-* [Custom user model](https://docs.djangoproject.com/en/3.2/topics/auth/customizing/#auth-custom-user) with no username (only email/password)
+* [Custom user model](https://docs.djangoproject.com/en/4.2/topics/auth/customizing/#auth-custom-user) with no username (only email/password)
 * [Sentry](https://sentry.io) support for error tracking
-* [Atomic Requests](https://docs.djangoproject.com/en/3.2/ref/settings/#atomic-requests) in production
+* [Atomic Requests](https://docs.djangoproject.com/en/4.2/ref/settings/#atomic-requests) in production
 * [Celery](https://docs.celeryproject.org/en/stable/index.html) asynchronous task management with [Redis](https://redis.io) as the transport
 * [Django Celery Beat](https://django-celery-beat.readthedocs.io/en/latest/) for periodic tasks management from the Django Admin
 * [htmx](https://htmx.org/) support via `django-htmx` for AJAX and other tools in HTML
@@ -36,7 +36,7 @@ I recommend checking out [pipx](https://github.com/pipxproject/pipx) for isolati
 
 
 ```bash
-pipx install 'django==3.2'
+pipx install 'django==4.2'
 ```
 
 ```bash
@@ -73,7 +73,7 @@ If not using Docker, you will need to provide your own Postgres database and add
 ## Docker Quickstart
 
 ```bash
-pipx install 'django==3.2'
+pipx install 'django==4.2'
 ```
 
 ```bash
@@ -116,4 +116,3 @@ More information: [Heroku docs](https://devcenter.heroku.com/articles/build-dock
 Simply add your Sentry DSN to the `.env` file.
 
 More information: [Sentry docs](https://sentry.io/for/django/).
-

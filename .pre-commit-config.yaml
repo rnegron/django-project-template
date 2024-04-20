@@ -1,15 +1,15 @@
 repos:
 - repo: https://github.com/python/black
-  rev: "23.9.1"
+  rev: "24.4.0"
   hooks:
   - id: black
-    language_version: python3.11
+    language_version: python3.12
 
 - repo: https://github.com/pre-commit/mirrors-mypy
-  rev: "v1.4.1"
+  rev: "v1.7.1"
   hooks:
   - id: mypy
-    language_version: python3.11
+    language_version: python3.12
     args: [--ignore-missing-imports, --disallow-untyped-defs]
     exclude: tests/|migrations/
     additional_dependencies:
@@ -17,15 +17,16 @@ repos:
             celery,
             dj-database-url,
             django-allauth,
+            django-browser-reload,
             django-celery-beat,
             django-debug-toolbar,
             django-filter,
             django-htmx,
             django-model-utils,
-            django-stubs==4.2.4,
+            django-stubs==4.2.7,
             django-tailwind,
             Django,
-            djangorestframework-stubs==3.14.2,
+            djangorestframework-stubs==3.14.5,
             djangorestframework,
             gunicorn,
             psycopg2-binary,
@@ -36,12 +37,12 @@ repos:
           ]
 
 - repo: https://github.com/PyCQA/isort
-  rev: 5.12.0
+  rev: 5.13.1
   hooks:
   -   id: isort
 
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.4.0
+  rev: v4.5.0
   hooks:
   - id: check-merge-conflict
     language_version: "python3"
@@ -53,7 +54,7 @@ repos:
     language_version: "python3"
 
 - repo: https://github.com/pycqa/flake8
-  rev: 6.1.0
+  rev: 7.0.0
   hooks:
   - id: flake8
     language_version: "python3"
