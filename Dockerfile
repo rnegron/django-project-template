@@ -1,4 +1,4 @@
-FROM python:3.12-slim-buster
+FROM python:3.13-slim-bookworm
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -28,13 +28,13 @@ RUN apt-get update && \
         && rm -rf /var/lib/apt/lists/*
 
 # Install Node.js (for Tailwind support)
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
     && apt-get install -y --no-install-recommends nodejs \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # Install application-level dependencies
-RUN pip install --no-cache-dir poetry==1.6.2
+RUN pip install --no-cache-dir poetry==2.1.2
 COPY pyproject.toml poetry.lock /src/
 RUN poetry install --no-root
 

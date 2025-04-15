@@ -18,7 +18,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:15.6
+        image: postgres:16.8-bookworm
         ports:
           - 5432:5432
         env:
@@ -38,15 +38,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python 3.12.2
+      - name: Set up Python 3.13.3
         uses: actions/setup-python@v5
         with:
-          python-version: 3.12.2
+          python-version: 3.13.3
 
-      - name: Set up Node 18
+      - name: Set up Node 22
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22
 
       - name: Setup Poetry
         uses: Gr1N/setup-poetry@v9
@@ -92,11 +92,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Python 3.12.2
+      - name: Set up Python 3.13.3
         uses: actions/setup-python@v5
         with:
-          python-version: 3.12.2
+          python-version: 3.13.3
 
       - name: Install System Dependencies
         run: sudo apt-get update && sudo apt-get install -y --no-install-recommends build-essential curl gettext git
-       pre-commit/action@v3.0.0
+        pre-commit/action@v3.0.0
