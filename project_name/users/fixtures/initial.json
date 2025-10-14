@@ -3,7 +3,7 @@
       "model": "users.user",
       "pk": "f405f8f9-410e-40fd-ab84-b596eceb019b",
       "fields": {
-        "password": "argon2$argon2i$v=19$m=512,t=2,p=2$d3pqMFV1Ykl1OGJW$CF5wOiX53xRFU7hxB/79RQ",
+        "password": "pbkdf2_sha256$600000$oV3FOPV6Q6tfj5N8TUB71Z$YZ3xhJCjRd2hp5iOzl+KmT0OZg07ax1RfWj3O27RZzI=",
         "last_login": null,
         "is_superuser": true,
         "name": "Admin User",

@@ -19,7 +19,6 @@ Inspired by [Sergio Mattei's](https://matteing.com/) "Shipping Projects at Light
 * Deployment to [Heroku](https://dashboard.heroku.com/) using containers
 * Testing with [pytest-django](https://pytest-django.readthedocs.io/en/latest/index.html)
 * Aggressive [pre-commit](https://pre-commit.com/) hooks with tools such as black, isort and flake8
-* [Argon2](https://docs.djangoproject.com/en/5.2/topics/auth/passwords/#using-argon2-with-django) hashed passwords by default
 * Alternative settings layout within a top-level config folder
 * [Custom user model](https://docs.djangoproject.com/en/5.2/topics/auth/customizing/#auth-custom-user) with no username (only email/password)
 * [Sentry](https://sentry.io) support for error tracking
@@ -42,8 +41,9 @@ pipx install 'django==5.2'
 ```bash
 django-admin startproject \
     --template=https://github.com/rnegron/django-project-template/archive/main.zip \
-    --name=docker-entrypoint.sh,.isort.cfg \
+    --name=docker-entrypoint.sh,.isort.cfg,pytest.ini \
     --extension=py,md,toml \
+    --exclude=node_modules \
     project_name_here
 ```
 
@@ -79,8 +79,9 @@ pipx install 'django==5.2'
 ```bash
 django-admin startproject \
     --template=https://github.com/rnegron/django-project-template/archive/main.zip \
-    --name=docker-entrypoint.sh,.isort.cfg \
+    --name=docker-entrypoint.sh,.isort.cfg,pytest.ini \
     --extension=py,md,toml \
+    --exclude=node_modules \
     project_name_here
 ```
 
