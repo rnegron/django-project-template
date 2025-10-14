@@ -1,9 +1,8 @@
-FROM python:3.13-slim-bookworm
+FROM python:3.13.8-slim-bookworm
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Set environment variables
-ENV POETRY_VIRTUALENVS_CREATE=0
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV LANGUAGE en_US:en
@@ -34,9 +33,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
     && rm -rf /var/lib/apt/lists/*
 
 # Install application-level dependencies
-RUN pip install --no-cache-dir poetry==2.1.2
-COPY pyproject.toml poetry.lock /src/
-RUN poetry install --no-root
+RUN pip install --no-cache-dir uv
+COPY pyproject.toml uv.lock /src/
+RUN uv pip install --system .
 
 # Copy project files over to image
 COPY . /src/

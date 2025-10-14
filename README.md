@@ -10,7 +10,7 @@ Inspired by [Sergio Mattei's](https://matteing.com/) "Shipping Projects at Light
 
 * Most recent supported Python version (3.13)
 * Latest Django LTS version (5.2)
-* [poetry](https://python-poetry.org/) as an alternative to `pipenv`
+* [uv](https://docs.astral.sh/uv/) as an alternative to `pip` and `pipenv`
 * Type hints using `mypy` and `django-stubs`
 * Tests and linting with GitHub CI
 * Containerization with Docker
@@ -52,7 +52,7 @@ cd project_name_here
 ```
 
 ```bash
-poetry install
+uv sync
 ```
 
 ```bash
@@ -60,11 +60,11 @@ cp .env.example .env
 ```
 
 ```bash
-poetry run pre-commit install
+uv run pre-commit install
 ```
 
 ```bash
-poetry run python manage.py check
+uv run python manage.py check
 ```
 
 If not using Docker, you will need to provide your own Postgres database and add the connection URL to the `.env` file.
