@@ -1,5 +1,5 @@
 [project]
-name = "django-project-template"
+name = "{{ project_name }}"
 version = "1.0.0"
 description = ""
 authors = [
@@ -20,7 +20,6 @@ dependencies = [
     "gunicorn>=22.0.0,<22.1.0",
     "python-dotenv>=1.0.1,<1.1.0",
     "django-allauth>=0.61.1,<0.62.0",
-    "argon2-cffi>=23.1.0,<23.2.0",
     "sentry-sdk>=1.45.0,<1.46.0",
     "whitenoise>=6.6.0,<6.7.0",
     "celery>=5.4.0,<5.5.0",

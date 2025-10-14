@@ -43,7 +43,7 @@ pipx install 'django==5.2'
 django-admin startproject \
     --template=https://github.com/rnegron/django-project-template/archive/main.zip \
     --name=docker-entrypoint.sh,.isort.cfg \
-    --extension=py,md,yml \
+    --extension=py,md,toml \
     project_name_here
 ```
 
@@ -80,7 +80,7 @@ pipx install 'django==5.2'
 django-admin startproject \
     --template=https://github.com/rnegron/django-project-template/archive/main.zip \
     --name=docker-entrypoint.sh,.isort.cfg \
-    --extension=py,md,yml \
+    --extension=py,md,toml \
     project_name_here
 ```
 
