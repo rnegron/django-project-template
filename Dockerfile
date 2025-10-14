@@ -3,10 +3,10 @@ FROM python:3.13.8-slim-bookworm
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-ENV LANGUAGE en_US:en
-ENV LANG en_US.UTF-8
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV LANGUAGE="en_US:en"
+ENV LANG="en_US.UTF-8"
 
 # Set work directory
 WORKDIR /src
