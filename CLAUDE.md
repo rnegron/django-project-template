@@ -73,11 +73,29 @@ uv run pytest tests/test_something.py::test_function_name
 uv run pre-commit run --all-files
 
 # Individual tools
-uv run black .
-uv run isort .
-uv run flake8
-uv run mypy .
+uv run ruff check .        # Run linting
+uv run ruff check . --fix  # Run linting with auto-fix
+uv run ruff format .       # Run formatting
+uv run mypy .              # Run type checking
 ```
+
+### Commit Messages
+
+This template enforces [Conventional Commits](https://www.conventionalcommits.org/) format:
+
+```bash
+# Interactive commit (recommended for beginners)
+uv run cz commit
+
+# Manual commit (must follow conventional format)
+git commit -m "feat: add user profile page"
+git commit -m "fix(auth): resolve token expiration"
+git commit -m "docs: update README with new features"
+```
+
+**Format:** `<type>(<scope>): <description>`
+
+**Allowed types:** feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert
 
 ### Django Management
 
@@ -201,11 +219,11 @@ mypy configured in `pyproject.toml` with strict settings:
 
 ### CI/CD
 
-GitHub Actions workflow (`.github/workflows/ci.yml`) runs:
-1. **Test job**: Runs tests with Postgres 16.8 and Redis 7.4-alpine, Python 3.13.3, Node 22, includes Playwright, requires 85% coverage
-2. **Lint job**: Runs pre-commit hooks (black, mypy, isort, flake8) with Python 3.13.3
+GitHub Actions workflows:
 
-Both jobs use UV with caching for faster builds.
+**`.github/workflows/ci.yml`** - Main CI pipeline:
+1. **Test job**: Runs tests with Postgres 16.8 and Redis 7.4-alpine, Python 3.13.3, Node 22, includes Playwright, requires 85% coverage, uploads results to Codecov
+2. **Lint job**: Runs Ruff (linting + formatting) and mypy type checking
 
 ## Important Notes for Development
 
@@ -252,13 +270,16 @@ uv run python -c "from django.contrib.auth.hashers import make_password; print(m
 ### Pre-commit Hooks
 
 Aggressive pre-commit hooks are enabled by default:
-- black (code formatting)
-- mypy (type checking, excludes tests/ and migrations/)
-- isort (import sorting)
-- flake8 with multiple plugins (bugbear, builtins, comprehensions, print, tidy-imports)
-- Various file checks (merge conflicts, debug statements, EOF fixer, trailing whitespace)
+- **Ruff** (fast linting and formatting - replaces black, isort, and flake8)
+- **mypy** (strict type checking, excludes tests/ and migrations/)
+- **Conventional commits** (validates commit message format via commitizen)
+- **Django checks** (runs `python manage.py check` before commits)
+- **Migration checks** (ensures no uncommitted migrations)
+- **File checks** (YAML, JSON, TOML validation, merge conflicts, debug statements, trailing whitespace, private key detection)
 
 Install hooks with: `uv run pre-commit install`
+
+**Note:** The commitizen hook validates commit messages using the [Conventional Commits](https://www.conventionalcommits.org/) format. Use `uv run cz commit` for an interactive commit experience, or ensure your manual commits follow the format: `<type>(<scope>): <description>`
 
 ### Database Configuration
 

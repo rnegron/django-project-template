@@ -24,23 +24,23 @@ dependencies = [
     "requests>=2.31.0,<2.32.0",
     "redis>=5.0.3,<5.1.0",
     "django-htmx>=1.17.3,<1.18.0",
-    "django-tailwind>=3.8.0,<3.9.0",
+    "django-tailwind>=4.3.0,<5.0.0",
     "django-browser-reload>=1.12.1,<1.13.0",
 ]
 
 [dependency-groups]
 dev = [
-    "black==24.4.0",
+    "commitizen>=4.9.1",
     "django-debug-toolbar==4.3.0",
-    "isort==5.13.1",
+    "django-stubs==4.2.7",
+    "djangorestframework-stubs==3.14.5",
+    "factory-boy==3.3.0",
+    "mypy==1.7.1",
     "pre-commit==3.4.0",
     "pytest==8.1.1",
     "pytest-django==4.8.0",
-    "factory-boy==3.3.0",
-    "flake8==7.0.0",
-    "djangorestframework-stubs==3.14.5",
-    "django-stubs==4.2.7",
-    "mypy==1.7.1",
+    "pytest-cov==7.0.0",
+    "ruff==0.14.3",
 ]
 
 [build-system]
@@ -64,7 +64,41 @@ plugins = ["mypy_django_plugin.main", "mypy_drf_plugin.main"]
 [tool.django-stubs]
 django_settings_module = "config.settings.test"
 
-[tool.black]
+[tool.ruff]
 line-length = 88
-target-version = ['py313']
-exclude = '(\.eggs|\.git|\.mypy_cache|\.venv|_build|build|dist|.*\/migrations\/.*)'
+target-version = "py313"
+exclude = [
+    ".eggs",
+    ".git",
+    ".mypy_cache",
+    ".venv",
+    "_build",
+    "build",
+    "dist",
+    "migrations",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+    "DJ",  # flake8-django
+]
+ignore = [
+    "E501",  # line too long (handled by formatter)
+    "B008",  # do not perform function calls in argument defaults
+    "DJ001", # avoid using null=True on string-based fields
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["{{ project_name }}"]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "1.0.0"
+tag_format = "v$version"

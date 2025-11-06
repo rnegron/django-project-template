@@ -282,9 +282,8 @@ run_type_checking() {
 run_linting() {
     log_step "Running linting checks"
 
-    black --check . || log_warn "black found formatting issues"
-    isort --check-only . || log_warn "isort found import issues"
-    flake8 . || log_warn "flake8 found issues"
+    ruff check . || log_warn "ruff linter found linting issues"
+    ruff format --check . || log_warn "ruff formatter found formatting issues"
 
     log_info "✓ Linting checks completed"
 }

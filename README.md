@@ -18,7 +18,9 @@ Inspired by [Sergio Mattei's](https://matteing.com/) "Shipping Projects at Light
 * Static file serving with [WhiteNoise](https://whitenoise.readthedocs.io/en/stable/)
 * Deployment to [Heroku](https://dashboard.heroku.com/) using containers
 * Testing with [pytest-django](https://pytest-django.readthedocs.io/en/latest/index.html)
-* Aggressive [pre-commit](https://pre-commit.com/) hooks with tools such as black, isort and flake8
+* Aggressive [pre-commit](https://pre-commit.com/) hooks with [Ruff](https://docs.astral.sh/ruff/) for fast linting and formatting
+* [Conventional Commits](https://www.conventionalcommits.org/) enforcement via [Commitizen](https://commitizen-tools.github.io/commitizen/)
+* Django-specific pre-commit hooks (system checks, migration checks)
 * Alternative settings layout within a top-level config folder
 * [Custom user model](https://docs.djangoproject.com/en/5.2/topics/auth/customizing/#auth-custom-user) with no username (only email/password)
 * [Sentry](https://sentry.io) support for error tracking
@@ -26,7 +28,7 @@ Inspired by [Sergio Mattei's](https://matteing.com/) "Shipping Projects at Light
 * [Celery](https://docs.celeryproject.org/en/stable/index.html) asynchronous task management with [Redis](https://redis.io) as the transport
 * [Django Celery Beat](https://django-celery-beat.readthedocs.io/en/latest/) for periodic tasks management from the Django Admin
 * [htmx](https://htmx.org/) support via `django-htmx` for AJAX and other tools in HTML
-* [Tailwind CSS](https://tailwindcss.com/) support via `django-tailwind` for webpage styling
+* [Tailwind CSS v4](https://tailwindcss.com/) support via `django-tailwind` for webpage styling
 * [Alpine.js](https://alpinejs.dev/) support via base template `<script>` tag for small interactivity
 
 ## Manual Quickstart
@@ -41,7 +43,7 @@ pipx install 'django==5.2'
 ```bash
 django-admin startproject \
     --template=https://github.com/rnegron/django-project-template/archive/main.zip \
-    --name=docker-entrypoint.sh,.isort.cfg,pytest.ini \
+    --name=docker-entrypoint.sh,pytest.ini \
     --extension=py,md,toml \
     --exclude=node_modules \
     project_name_here
@@ -79,7 +81,7 @@ pipx install 'django==5.2'
 ```bash
 django-admin startproject \
     --template=https://github.com/rnegron/django-project-template/archive/main.zip \
-    --name=docker-entrypoint.sh,.isort.cfg,pytest.ini \
+    --name=docker-entrypoint.sh,pytest.ini \
     --extension=py,md,toml \
     --exclude=node_modules \
     project_name_here

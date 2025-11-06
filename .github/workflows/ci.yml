@@ -75,10 +75,14 @@ jobs:
         run: uv run python manage.py migrate
 
       - name: Test with pytest (coverage)
-        run: uv run pytest --cov={{project_name}}  --cov-config=.coveragerc --cov-fail-under=85  --cov-report term-missing:skip-covered
+        run: uv run pytest --cov={{project_name}} --cov-report=term --cov-report=xml --cov-fail-under=85 --cov-report term-missing:skip-covered
+
+      - name: Check for missing migrations
+        run: uv run python manage.py makemigrations --check --dry-run --no-input
 
   lint:
     runs-on: ubuntu-latest
+    name: Lint with ruff
 
     steps:
       - uses: actions/checkout@v4
@@ -96,5 +100,11 @@ jobs:
       - name: Install System Dependencies
         run: sudo apt-get update && sudo apt-get install -y --no-install-recommends build-essential curl gettext git
 
-      - name: Run pre-commit hooks
-        uses: pre-commit/action@v3.0.1
+      - name: Install Python Dependencies
+        run: uv sync
+
+      - name: Run ruff check
+        run: uv run ruff check .
+
+      - name: Run ruff format check
+        run: uv run ruff format --check .
