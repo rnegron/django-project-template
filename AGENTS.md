@@ -254,13 +254,12 @@ Required environment variables (see `.env.example`):
 
 ## Deployment
 
-### Heroku
+Container-based: the `Dockerfile` runs on any Docker host (Render, Fly.io, Railway, Cloud Run, ECS, a plain VM, etc.). Provide `SECRET_KEY`, `DATABASE_URL`, `REDIS_URL`, and `DJANGO_SETTINGS_MODULE=config.settings.production`. Processes:
+- **Release/migrate:** `python manage.py migrate`
+- **Web:** `gunicorn -b "0.0.0.0:${PORT:-8000}" -w 2 "config.wsgi:application" --log-file -`
+- **Worker:** `celery -A {{ project_name }} worker --beat --scheduler django --loglevel=info`
 
-Configured for container-based deployment via `heroku.yml`:
-1. Set stack: `heroku stack:set container`
-2. Push: `git push heroku main`
-
-Production settings in `config/settings/production.py` include:
+Static files (Tailwind + `collectstatic`) are built into the image and served by WhiteNoise. Production settings in `config/settings/production.py` include:
 - Atomic database requests
 - SSL redirect and secure cookies
 - Sentry integration for error tracking (sentry-sdk 2.x)
