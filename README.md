@@ -14,7 +14,7 @@ Inspired by [Sergio Mattei's](https://matteing.com/) "Shipping Projects at Light
 * Type hints using `mypy` and `django-stubs`
 * Tests and linting with GitHub CI
 * Containerization with Docker
-* A `docker-compose` setup for easy development using the latest Postgres major version supported by Heroku (16)
+* A `docker-compose` setup for easy development using the latest Postgres major version supported by Heroku (17)
 * Static file serving with [WhiteNoise](https://whitenoise.readthedocs.io/en/stable/)
 * Deployment to [Heroku](https://dashboard.heroku.com/) using containers
 * Testing with [pytest-django](https://pytest-django.readthedocs.io/en/latest/index.html)

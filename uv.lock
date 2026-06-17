@@ -795,7 +795,7 @@ requires-dist = [
     { name = "psycopg", extras = ["binary"], specifier = ">=3.3.4" },
     { name = "python-dotenv", specifier = ">=1.2.2" },
     { name = "redis", specifier = ">=8.0.0" },
-    { name = "requests", specifier = ">=2.32.0" },
+    { name = "requests", specifier = ">=2.34.2" },
     { name = "sentry-sdk", specifier = ">=2.63.0" },
     { name = "whitenoise", specifier = ">=6.12.0" },
 ]

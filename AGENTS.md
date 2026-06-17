@@ -1,8 +1,6 @@
 # AGENTS.md
 
-This is the canonical instructions file for AI coding agents working in this
-repository (see https://agents.md). Tool-specific entrypoints such as
-`CLAUDE.md` point here so every agent shares one source of truth.
+This is the canonical instructions file for AI coding agents working in this repository (see https://agents.md). Tool-specific entrypoints such as `CLAUDE.md` point here so every agent shares one source of truth.
 
 ## Project Overview
 

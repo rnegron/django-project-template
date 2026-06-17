@@ -220,7 +220,6 @@ CELERY_TASK_ACKS_LATE = True
 CELERY_TASK_TIME_LIMIT = 60 * 2
 CELERY_BROKER_URL = os.environ.get("REDIS_URL")
 
-# Default primary key field type (Django's default since 3.2)
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Tailwind
