@@ -14,14 +14,14 @@ repos:
         args: ['--maxkb=1000']
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.3
+    rev: v0.15.17
     hooks:
       - id: ruff-check
         args: [ --fix ]
       - id: ruff-format
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.7.1
+    rev: v2.1.0
     hooks:
       - id: mypy
         language_version: python3.13
@@ -37,13 +37,13 @@ repos:
           - django-filter
           - django-htmx
           - django-model-utils
-          - django-stubs==4.2.7
+          - django-stubs==6.0.5
           - django-tailwind
           - Django
-          - djangorestframework-stubs==3.14.5
+          - djangorestframework-stubs==3.17.0
           - djangorestframework
           - gunicorn
-          - psycopg2-binary
+          - psycopg[binary]
           - python-dotenv
           - requests
           - sentry-sdk

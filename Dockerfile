@@ -1,4 +1,4 @@
-FROM python:3.13.8-slim-bookworm
+FROM python:3.13.14-slim-bookworm
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 

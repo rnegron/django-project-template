@@ -34,11 +34,12 @@ SENTRY_DSN = os.getenv("SENTRY_DSN")
 if SENTRY_DSN:
     sentry_sdk.init(
         dsn=SENTRY_DSN,
-        integrations=[  # type: ignore
+        integrations=[
             DjangoIntegration(),
             CeleryIntegration(),
             RedisIntegration(),
         ],
+        traces_sample_rate=float(os.getenv("SENTRY_TRACES_SAMPLE_RATE", "0.0")),
     )
 
 
