@@ -327,5 +327,3 @@ Production settings in `config/settings/production.py` include:
 - SSL redirect and secure cookies
 - Sentry integration for error tracking (sentry-sdk 2.x)
 - Security headers (HSTS, XSS filter, content type nosniff)
-</content>
-</invoke>

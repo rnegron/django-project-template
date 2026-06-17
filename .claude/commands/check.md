@@ -15,4 +15,3 @@ the first failure; collect all results:
 
 Fix every failure, re-run the affected step to confirm green, then give a concise
 pass/fail summary per step. Do not commit; leave changes staged for review.
-</content>
