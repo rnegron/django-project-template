@@ -7,8 +7,7 @@ User = get_user_model()
 
 
 @pytest.fixture
-@pytest.mark.django_db
-def user():
+def user(db):
     email = "test_email@example.com"
     password = "test_password"
     user = User.objects.create(email=email, password=password)
@@ -21,8 +20,7 @@ def api_client():
 
 
 @pytest.fixture
-@pytest.mark.django_db
-def authenticated_client(user):
+def authenticated_client(db, user):
     token = Token.objects.create(user=user)
     client = APIClient()
     client.credentials(HTTP_AUTHORIZATION="Token " + token.key)

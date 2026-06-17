@@ -1,4 +1,4 @@
-FROM python:3.13.8-slim-bookworm
+FROM python:3.13.14-slim-bookworm
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -40,7 +40,7 @@ RUN uv pip install --system .
 # Copy project files over to image
 COPY . /src/
 
-# Prepare static files for Heroku deployment
+# Prepare static files for production
 RUN python manage.py tailwind install --no-input
 RUN python manage.py tailwind build --no-input
 RUN python manage.py collectstatic --noinput

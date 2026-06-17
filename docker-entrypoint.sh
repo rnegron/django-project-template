@@ -5,11 +5,11 @@ set -euo pipefail
 postgres_ready() {
     python manage.py shell << END
 import sys
-import psycopg2
 from django.db import connections
+from django.db.utils import OperationalError
 try:
   connections['default'].cursor()
-except psycopg2.OperationalError:
+except OperationalError:
     sys.exit(-1)
 sys.exit(0)
 END

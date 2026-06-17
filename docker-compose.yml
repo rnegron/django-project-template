@@ -4,7 +4,7 @@ volumes:
 
 services:
   database:
-    image: postgres:16.8-bookworm
+    image: postgres:17-bookworm
     environment:
       - POSTGRES_PASSWORD=password
     volumes:
@@ -12,7 +12,7 @@ services:
     ports:
       - "5432:5432"
   redis:
-    image: redis:7.2-alpine
+    image: redis:8-alpine
     ports:
       - "6379:6379"
   web:
@@ -31,9 +31,9 @@ services:
       - .:/src
     ports:
       - 8000:8000
-    links:
-      - database:database
-      - redis:redis
+    depends_on:
+      - database
+      - redis
 
   worker:
     build:
@@ -48,9 +48,9 @@ services:
       - DJANGO_SETTINGS_MODULE=config.settings.local
     volumes:
       - .:/src
-    links:
-      - database:database
-      - redis:redis
+    depends_on:
+      - database
+      - redis
 
   tailwind:
     build:

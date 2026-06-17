@@ -14,9 +14,9 @@ Inspired by [Sergio Mattei's](https://matteing.com/) "Shipping Projects at Light
 * Type hints using `mypy` and `django-stubs`
 * Tests and linting with GitHub CI
 * Containerization with Docker
-* A `docker-compose` setup for easy development using the latest Postgres major version supported by Heroku (16)
+* A `docker-compose` setup for easy development using the latest Postgres major version (17)
 * Static file serving with [WhiteNoise](https://whitenoise.readthedocs.io/en/stable/)
-* Deployment to [Heroku](https://dashboard.heroku.com/) using containers
+* Container-based deployment to any Docker host (Render, Fly.io, Railway, Cloud Run, ECS, a plain VM, etc.)
 * Testing with [pytest-django](https://pytest-django.readthedocs.io/en/latest/index.html)
 * Aggressive [pre-commit](https://pre-commit.com/) hooks with [Ruff](https://docs.astral.sh/ruff/) for fast linting and formatting
 * [Conventional Commits](https://www.conventionalcommits.org/) enforcement via [Commitizen](https://commitizen-tools.github.io/commitizen/)
@@ -46,6 +46,7 @@ django-admin startproject \
     --name=docker-entrypoint.sh,pytest.ini \
     --extension=py,md,toml \
     --exclude=node_modules \
+    --exclude=.template-dev \
     project_name_here
 ```
 
@@ -84,6 +85,7 @@ django-admin startproject \
     --name=docker-entrypoint.sh,pytest.ini \
     --extension=py,md,toml \
     --exclude=node_modules \
+    --exclude=.template-dev \
     project_name_here
 ```
 
@@ -105,17 +107,30 @@ The API should be live at [http://localhost:8000](http//localhost:8000). A super
     email: admin@example.com
     password: password123
 ```
-## Deploy with Heroku
+## Deployment
 
-Log in to your Heroku account with their CLI and set up your repository to track your Heroku app. Then,
+The project ships as a single `Dockerfile` and runs on any container host (Render, Fly.io, Railway, Cloud Run, ECS, a plain VM, etc.).
 
-* `heroku stack:set container`
-* `git push heroku main`
+Set these environment variables on the host, plus `DJANGO_SETTINGS_MODULE=config.settings.production`:
 
-More information: [Heroku docs](https://devcenter.heroku.com/articles/build-docker-images-heroku-yml).
+* `SECRET_KEY`
+* `DATABASE_URL` (Postgres)
+* `REDIS_URL`
+
+Run these processes from the built image:
+
+* **Release / migrate:** `python manage.py migrate`
+* **Web:** `gunicorn -b "0.0.0.0:${PORT:-8000}" -w 2 "config.wsgi:application" --log-file -`
+* **Worker:** `celery -A {{ project_name }} worker --beat --scheduler django --loglevel=info`
+
+Static files (Tailwind + `collectstatic`) are built into the image and served by WhiteNoise, so no external static hosting is needed. `SECURE_PROXY_SSL_HEADER` is preset for deployments behind a TLS-terminating proxy.
 
 ## Track errors with Sentry
 
 Simply add your Sentry DSN to the `.env` file.
 
 More information: [Sentry docs](https://sentry.io/for/django/).
+
+## Developing this template
+
+Working on the template repository itself (not a project generated from it)? See [`.template-dev/AGENTS.md`](.template-dev/AGENTS.md) for placeholder workarounds, lockfile regeneration, and how to validate the template by generating a real project.
