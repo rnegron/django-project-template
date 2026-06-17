@@ -46,6 +46,7 @@ django-admin startproject \
     --name=docker-entrypoint.sh,pytest.ini \
     --extension=py,md,toml \
     --exclude=node_modules \
+    --exclude=.template-dev \
     project_name_here
 ```
 
@@ -84,6 +85,7 @@ django-admin startproject \
     --name=docker-entrypoint.sh,pytest.ini \
     --extension=py,md,toml \
     --exclude=node_modules \
+    --exclude=.template-dev \
     project_name_here
 ```
 
@@ -119,3 +121,7 @@ More information: [Heroku docs](https://devcenter.heroku.com/articles/build-dock
 Simply add your Sentry DSN to the `.env` file.
 
 More information: [Sentry docs](https://sentry.io/for/django/).
+
+## Developing this template
+
+Working on the template repository itself (not a project generated from it)? See [`.template-dev/AGENTS.md`](.template-dev/AGENTS.md) for placeholder workarounds, lockfile regeneration, and how to validate the template by generating a real project.

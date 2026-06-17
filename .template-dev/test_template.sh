@@ -24,7 +24,7 @@ set -euo pipefail
 
 TEST_PROJECT_NAME="test_project_$$"
 TEST_DIR="/tmp/${TEST_PROJECT_NAME}"
-TEMPLATE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TEMPLATE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 # Test execution flags
 SKIP_MIGRATIONS=false
@@ -87,6 +87,7 @@ create_project() {
         --name=docker-entrypoint.sh,.isort.cfg,pytest.ini \
         --extension=py,md,toml \
         --exclude=node_modules \
+        --exclude=.template-dev \
         "$TEST_PROJECT_NAME" \
         "$TEST_DIR"
 

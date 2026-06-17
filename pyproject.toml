@@ -98,6 +98,14 @@ ignore = [
 [tool.ruff.lint.isort]
 known-first-party = ["{{ project_name }}"]
 
+[tool.coverage.run]
+# Exclude test infrastructure and generated code from coverage measurement
+omit = [
+    "*/migrations/*",
+    "*/factories.py",
+    "*/tests/*",
+]
+
 [tool.commitizen]
 name = "cz_conventional_commits"
 version = "1.0.0"

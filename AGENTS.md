@@ -1,10 +1,10 @@
 # AGENTS.md
 
-This is the canonical instructions file for AI coding agents working in this repository (see https://agents.md). Tool-specific entrypoints such as `CLAUDE.md` point here so every agent shares one source of truth.
+Guidance for AI coding agents working in this repository. Tool-specific entrypoints such as `CLAUDE.md` point here so every agent shares one source of truth.
 
 ## Project Overview
 
-This is a Django project template designed for rapid backend development. It's a **template repository** meant to be used via `django-admin startproject --template=...` to bootstrap new Django projects. Template variables like `{{ project_name }}` appear throughout the codebase and are replaced during project initialization.
+A Django backend project bootstrapped from a Django project template, set up for rapid development.
 
 Key characteristics:
 - Python 3.13 with Django 5.2 (LTS)
@@ -13,20 +13,6 @@ Key characteristics:
 - Full-stack setup including frontend tooling (Tailwind, htmx, Alpine.js)
 - Celery + Redis for async tasks
 - Docker-first development approach
-
-## Testing the Template
-
-Since this is a template repository, automated tests create real projects from the template:
-
-```bash
-# Quick validation (~3-5 min)
-./test_template.sh
-
-# Full test with Docker (~10-15 min)
-./test_template.sh --full
-```
-
-See `TESTING.md` for detailed testing strategy and workflows.
 
 ## Essential Commands
 
@@ -38,11 +24,6 @@ uv sync
 cp .env.example .env
 uv run pre-commit install
 uv run python manage.py check
-
-# Template development (working on the template itself)
-uv sync --no-install-project  # Skip installing the template package (avoids metadata validation errors)
-cp .env.example .env
-uv run pre-commit install
 
 # Docker development (recommended)
 cp .env.example .env
@@ -57,7 +38,7 @@ docker-compose up --detach --build
 uv run pytest
 
 # Run with coverage (CI standard: 85% minimum)
-uv run pytest --cov={{project_name}} --cov-fail-under=85 --cov-report term-missing:skip-covered
+uv run pytest --cov={{ project_name }} --cov-fail-under=85 --cov-report term-missing:skip-covered
 
 # Run specific test file
 uv run pytest tests/test_something.py
@@ -81,7 +62,7 @@ uv run mypy .              # Run type checking
 
 ### Commit Messages
 
-This template enforces [Conventional Commits](https://www.conventionalcommits.org/) format:
+This project enforces [Conventional Commits](https://www.conventionalcommits.org/) format:
 
 ```bash
 # Interactive commit (recommended for beginners)
@@ -133,7 +114,7 @@ uv run python manage.py collectstatic --noinput
 
 ```bash
 # Run Celery worker with beat scheduler
-celery -A project_name worker --beat --scheduler django --loglevel=info
+celery -A {{ project_name }} worker --beat --scheduler django --loglevel=info
 
 # In Docker, this runs automatically via docker-compose (worker service)
 ```
@@ -155,7 +136,7 @@ Set via `DJANGO_SETTINGS_MODULE` environment variable:
 
 ### Custom User Model
 
-Located in `project_name/users/models.py`:
+Located in `{{ project_name }}/users/models.py`:
 - Uses `UUID` as primary key instead of integer
 - Email-only authentication (no username field)
 - Custom manager `CustomUserManager` handles user creation
@@ -172,11 +153,11 @@ ACCOUNT_SIGNUP_FIELDS = ["email*", "password1*", "password2*"]
 
 Root URL configuration in `config/urls.py`:
 - `/admin/` - Django Admin
-- `/api/v1/` - REST API endpoints (includes `project_name.api.urls`)
+- `/api/v1/` - REST API endpoints (includes `{{ project_name }}.api.urls`)
 - `/__debug__/` - Django Debug Toolbar (DEBUG mode only)
 - `/__reload__/` - Browser reload for development (DEBUG mode only)
 
-API URLs are defined in `project_name/api/urls.py` (currently empty in template).
+API URLs are defined in `{{ project_name }}/api/urls.py`.
 
 ### Docker Architecture
 
@@ -194,10 +175,10 @@ The `docker-entrypoint.sh` script handles different startup modes based on the c
 
 ### App Structure
 
-The template includes three Django apps:
-1. **`project_name.users`** - Custom User model, forms, admin, factories
-2. **`project_name.api`** - REST API endpoints (DRF)
-3. **`project_name.theme`** - Tailwind CSS integration app
+Three Django apps:
+1. **`{{ project_name }}.users`** - Custom User model, forms, admin, factories
+2. **`{{ project_name }}.api`** - REST API endpoints (DRF)
+3. **`{{ project_name }}.theme`** - Tailwind CSS integration app
 
 Templates are stored at project root in `templates/` directory.
 
@@ -206,8 +187,9 @@ Templates are stored at project root in `templates/` directory.
 Tests use pytest-django with configuration in `pytest.ini`:
 - Test files: `tests.py`, `test_*.py`, `*_tests.py`
 - Settings: `config.settings.test`
-- Factories via `factory-boy` (see `project_name/users/factories.py`)
+- Factories via `factory-boy` (see `{{ project_name }}/users/factories.py`)
 - Test directory: `tests/` at project root
+- Coverage excludes test infrastructure (migrations, factories, tests) via `[tool.coverage.run]`
 
 ### Type Checking
 
@@ -223,49 +205,9 @@ GitHub Actions workflows:
 
 **`.github/workflows/ci.yml`** - Main CI pipeline:
 1. **Test job**: Runs tests with Postgres 17 and Redis 8-alpine, Python 3.13, Node 22, includes Playwright, requires 85% coverage, uploads results to Codecov
-2. **Lint job**: Runs Ruff (linting + formatting) and mypy type checking
+2. **Lint job**: Runs Ruff (linting + formatting)
 
-## Important Notes for Development
-
-### Template Variables
-
-This is a template repository. Files contain `{{ project_name }}` placeholders that get replaced during `django-admin startproject`. When working on the template itself, preserve these placeholders. When working on a project created from this template, these will already be replaced.
-
-**Important**: When using this template, always include `--exclude=node_modules` to prevent Django's template engine from trying to parse:
-- JavaScript files in the Tailwind `node_modules` directory (which contain syntax that conflicts with Django templates)
-
-### Working on the Template Itself
-
-When developing this template repository (not a project created from it), use `uv sync --no-install-project` to install dependencies without trying to build/install the template package itself. This is necessary because:
-- The `pyproject.toml` contains template placeholders (e.g., `name = "{{ project_name }}"`)
-- These placeholders may not pass package metadata validation (like invalid author emails)
-- The `--no-install-project` flag skips the editable install of the template package while still installing all dependencies
-
-For projects created from this template, use the standard `uv sync` command (placeholders will already be replaced with actual values).
-
-#### Running Django Commands on the Template
-
-When you need to run Django management commands (like generating password hashes, running migrations, etc.) while working on the template itself, `uv run` will fail because it tries to build the package with template placeholders. Workaround:
-
-1. Temporarily change `pyproject.toml` line 2 from `name = "{{ project_name }}"` to a valid name like `name = "temp-project"`
-2. Add a `[tool.hatch.build.targets.wheel]` section with `packages = ["project_name"]` to tell hatchling where to find the package
-3. Run your Django command: `uv run python manage.py <command>`
-4. Revert both changes back to template placeholders
-
-Example:
-```bash
-# Before running Django commands, edit pyproject.toml:
-# - Change: name = "{{ project_name }}" → name = "temp-project"
-# - Add after [build-system]:
-#   [tool.hatch.build.targets.wheel]
-#   packages = ["project_name"]
-
-uv run python -c "from django.contrib.auth.hashers import make_password; print(make_password('password123'))"
-
-# After running commands, revert pyproject.toml back to template placeholders
-```
-
-**Important**: Always revert these changes before committing - the template variables must be preserved.
+## Important Notes
 
 ### Pre-commit Hooks
 
@@ -278,8 +220,6 @@ Aggressive pre-commit hooks are enabled by default:
 - **File checks** (YAML, JSON, TOML validation, merge conflicts, debug statements, trailing whitespace, private key detection)
 
 Install hooks with: `uv run pre-commit install`
-
-**Note:** The commitizen hook validates commit messages using the [Conventional Commits](https://www.conventionalcommits.org/) format. Use `uv run cz commit` for an interactive commit experience, or ensure your manual commits follow the format: `<type>(<scope>): <description>`
 
 ### Database Configuration
 
@@ -296,9 +236,9 @@ Tailwind CSS is integrated via django-tailwind and requires Node.js.
 
 ### Celery Configuration
 
-Celery is configured but the actual celery.py file is not included in the template. When adding Celery tasks:
-1. Create `project_name/celery.py` with standard Celery app initialization
-2. Import it in `project_name/__init__.py` to ensure it's loaded
+Celery is configured but the actual celery.py file is not included by default. When adding Celery tasks:
+1. Create `{{ project_name }}/celery.py` with standard Celery app initialization
+2. Import it in `{{ project_name }}/__init__.py` to ensure it's loaded
 3. Tasks use Redis as broker (configured via `REDIS_URL` environment variable)
 4. Beat scheduler uses django-celery-beat for database-backed periodic tasks
 
@@ -325,3 +265,4 @@ Production settings in `config/settings/production.py` include:
 - SSL redirect and secure cookies
 - Sentry integration for error tracking (sentry-sdk 2.x)
 - Security headers (HSTS, XSS filter, content type nosniff)
+</content>
